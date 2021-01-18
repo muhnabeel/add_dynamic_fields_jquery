@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add field</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+	 <div class="protype" style="display: block;">
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="name" class="col-sm-2 col-md-3 control-label">Variation Name<span style="color:red;">*</span></label>
+                                                <div class="col-sm-10 col-md-8">
+                                                    <input class="form-control variationval" type="text" name="productvariation[0][name]" id="productvname" value="">
+                                                 </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="name" class="col-sm-2 col-md-3 control-label">Variation Size<span style="color:red;">*</span></label>
+                                                        <div class="col-sm-10 col-md-8">
+                                                            <input class="form-control variationval" type="text" name="productvariation[0][size]" id="productvsize" value="">
+                                                         </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label for="name" class="col-sm-2 col-md-3 control-label">Variation Price<span style="color:red;">*</span></label>
+                                                        <div class="col-sm-10 col-md-8">
+                                                            <input class="form-control variationval" type="text" name="productvariation[0][price]" id="productvprice" value="">
+                                                         </div>
+                                                    </div>
+
+
+
+
+                                                    <input type="button" name="btn" class="add_button" value="ADD Variation">
+
+                                                    <!-- <div class="field_wrapper">
+                                                        
+
+                                                    </div>
+
+                                                    <input type="button" name="btn" class="remove_button" value="Remove Variation"> -->
+
+                                                    <div class="field_wrapper">
+    <div>
+       
+        <!-- <a href="javascript:void(0);" class="add_button" title="Add field"><img src="add-icon.png"/></a> -->
+    </div>
+</div>
+                                             
+                                                   
+                                                </div>
+
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+
+  jQuery(document).ready(function($){
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('.add_button'); //Add button selector
+    var wrapper = $('.field_wrapper'); //Input field wrapper
+    var count = 0;
+   
+    var x = 1; //Initial field counter is 1
+    
+    //Once add button is clicked
+    $(addButton).click(function(){
+
+       var fieldHTML = '<div class="cllls">  <div class="form-group"><label for="name" class="col-sm-2 col-md-3 control-label">Variation Name<span style="color:red;">*</span></label><div class="col-sm-10 col-md-8"><input class="form-control field-validate" type="text" name="productvariation['+(++count)+'][name]" id="productvname" value=""></div></div><div class="form-group"><label for="name" class="col-sm-2 col-md-3 control-label">Variation Size<span style="color:red;">*</span></label><div class="col-sm-10 col-md-8"><input class="form-control field-validate" type="text" name="productvariation['+(count)+'][size]" id="productvsize" value=""></div></div><div class="form-group"><label for="name" class="col-sm-2 col-md-3 control-label">Variation Price<span style="color:red;">*</span></label><div class="col-sm-10 col-md-8"><input class="form-control field-validate" type="text" name="productvariation['+(count)+'][price]" id="productvprice" value=""></div></div><a href="javascript:void(0);" class="remove_button"><img src="https://digiwised.com/pharmasy/public/images/removeicon.png" style="height: 20px;width: 20px;"/></a></div>'; //New input field html 
+
+        //Check maximum number of input fields
+        if(x < maxField){ 
+            x++; //Increment field counter
+            //count++;
+            $(wrapper).append(fieldHTML); //Add field html
+        }
+    });
+    
+    //Once remove button is clicked
+    $(wrapper).on('click', '.remove_button', function(e){
+        e.preventDefault();
+       $(this).parent('div').remove(); //Remove field html
+        x--; //Decrement field counter
+    });
+});  
+
+
+ 
+
+</script>
